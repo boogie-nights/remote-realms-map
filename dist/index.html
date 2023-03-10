@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Remote Realms Interactive Map</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script type="module" crossorigin src="/remote-realms-map/assets/index-9f7ea1c1.js"></script>
+    <link rel="stylesheet" href="/remote-realms-map/assets/index-48ab00e4.css">
+  </head>
+  <body>
+    <div id="map" class="map"></div>
+    <div id="popup" class="debug-popup">
+      <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+      <div id="popup-content"></div>
+    </div>
+    <!-- Pointer events polyfill for old browsers, see https://caniuse.com/#feat=pointer -->
+    <script src="https://cdn.jsdelivr.net/npm/elm-pep@1.0.6/dist/elm-pep.js"></script>
+    
+  </body>
+</html>

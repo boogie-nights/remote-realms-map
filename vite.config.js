@@ -1,6 +1,6 @@
 export default {
+  base: '/remote-realms-map/',
   build: {
-    base: '/boogie-nights-boogie-nights/',
     sourcemap: true,
   }
 }
