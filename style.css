@@ -86,6 +86,10 @@ html, body {
   filter: invert(92%) sepia(60%) saturate(927%) hue-rotate(290deg) brightness(115%) contrast(101%) drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
 }
 
+.map-pin.teleport {
+  filter: invert(83%) sepia(82%) saturate(2143%) hue-rotate(182deg) brightness(100%) contrast(78%) drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+}
+
 .map-pin:after, .map-pin:before {
   top: 100%;
   border: solid transparent;

@@ -1,5 +1,5 @@
 import './style.css';
-import { npcData, questData, resourceData} from './data.js';
+import { npcData, questData, resourceData, teleportData} from './data.js';
 import {Map, View} from 'ol';
 import ImageLayer from 'ol/layer/Image.js';
 import Projection from 'ol/proj/Projection.js';
@@ -18,9 +18,10 @@ function createFilterList() {
   filterContainer.classList.add('hidden');
   filterContainer.innerHTML = '<h1 class="center-text">Filter Options<h1>'
 
-  filterContainer.append(createToggle("Show NPCs", "npc"))
-  filterContainer.append(createToggle("Show Resources", "resource"))
-  filterContainer.append(createToggle("Show Show Quests", "quest"))
+  filterContainer.append(createToggle("Show NPCs", "npc"));
+  filterContainer.append(createToggle("Show Resources", "resource"));
+  filterContainer.append(createToggle("Show Show Quests", "quest"));
+  filterContainer.append(createToggle("Show Teleports", "teleport"));
 
   return filterContainer;
 }
@@ -223,6 +224,17 @@ map.on('loadend', function(evt) {
     });
 
     map.addOverlay(overlay)
+  });
+
+  teleportData.forEach((teleport, idx) => {
+    const pin = createPin(teleport, "teleport", idx);
+
+    var overlay = new Overlay({
+      element: pin,
+      position: teleport.location
+    });
+
+    map.addOverlay(overlay)
   })
 });
 
@@ -238,6 +250,7 @@ checkboxes.forEach(function(checkbox) {
       togglePinVisbility('npc');
       togglePinVisbility('resource');
       togglePinVisbility('quest');
+      togglePinVisbility('teleport');
   });
 });
 
