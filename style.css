@@ -1,0 +1,159 @@
+@import "node_modules/ol/ol.css";
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background-color: black;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.debug-popup {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  width: 250px;
+  z-index: 100;
+}
+
+.ol-popup {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  bottom: 55px;
+  width: 150px;
+  left: -81px;
+  z-index: 100;
+
+}
+
+.ol-popup:after, .ol-popup:before {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.ol-popup:after {
+  border-top-color: white;
+  border-width: 10px;
+  left: 80px;
+  margin-left: -10px;
+}
+
+.ol-popup:before {
+  border-top-color: #cccccc;
+  border-width: 11px;
+  left: 80px;
+  margin-left: -11px;
+}
+
+.ol-popup-closer {
+  text-decoration: none;
+  position: absolute;
+  top: 2px;
+  right: 8px;
+}
+
+.ol-popup-closer:after {
+  content: "✖";
+}
+
+.map-pin.npc {
+  filter: invert(91%) sepia(38%) saturate(536%) hue-rotate(355deg) brightness(106%) contrast(103%) drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+}
+
+.map-pin.resource {
+  filter: invert(88%) sepia(42%) saturate(526%) hue-rotate(166deg) brightness(97%) contrast(85%) drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+}
+
+.map-pin.quest {
+  filter: invert(92%) sepia(60%) saturate(927%) hue-rotate(290deg) brightness(115%) contrast(101%) drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+}
+
+.map-pin:after, .map-pin:before {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.map-pin {
+  position: absolute;
+  bottom: -4px;
+  left: -25px;
+  width: 50px;
+  height: 50px;
+  background-image: url(./data/map-pin.svg);
+  background-repeat: no-repeat;
+  background-size: 85%;
+  background-position: center;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.hidden {
+  display: none;
+}
+
+.popup-h1 {
+  font-size: 18px;
+  margin-top: 0;
+}
+
+.popup-h2 {
+  font-size: 16px;
+}
+
+.filter {
+  background-image: url(./data/layer.svg);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  bottom: 10px;
+  left: 10px;
+
+  background-color: white;
+}
+
+.filter-container {
+  position: absolute;
+  bottom: 70px;
+  left: 10px;
+  width: 250px;
+  height: 500px;
+  background-color: white;
+  cursor: default;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.center-text {
+  text-align: center;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+}
