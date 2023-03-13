@@ -38,6 +38,14 @@ export const resourceData: ResourceEntry[] = [
             { x: 1963, y: 3147, description: 'Immerbury Rune Altar' },
             { x: 1887, y: 3491, description: 'Immerbury' },
             { x: 1826, y: 3509, description: 'Immerbury' },
+            { x: 1256, y: 3993, description: 'South of Brie' },
+            { x: 1230, y: 3984, description: 'South of Brie' },
+            { x: 1439, y: 4153, description: 'East of Brie' },
+            { x: 1414, y: 3914, description: 'South-east of Brie' },
+            { x: 1793, y: 3727, description: 'Near Carpentry Bench North of Immerbury' },
+            { x: 1831, y: 3700, description: 'Near Carpentry Bench North of Immerbury' },
+            { x: 1863, y: 3766, description: 'Near Carpentry Bench North of Immerbury' },
+            { x: 1775, y: 3817, description: 'Near Carpentry Bench North of Immerbury' },
         ],
     },
     {
@@ -60,6 +68,29 @@ export const resourceData: ResourceEntry[] = [
             { x: 1873, y: 3329, description: 'Immerbury Horse Pasture' },
             { x: 1900, y: 3332, description: 'Immerbury Horse Pasture' },
             { x: 1845, y: 3347, description: 'Immerbury Horse Pasture' },
+            { x: 1389, y: 3822, description: 'South of Slayer Master' },
+            { x: 1414, y: 3829, description: 'South of Slayer Master' },
+            { x: 1452, y: 3812, description: 'South of Slayer Master' },
+            { x: 1479, y: 3818, description: 'South of Slayer Master' },
+            { x: 1503, y: 3811, description: 'South of Slayer Master' },
+            { x: 1960, y: 3741, description: 'North east of Immerbury on Coast' },
+            { x: 2007, y: 3797, description: 'North east of Immerbury on Coast' },
+            { x: 2021, y: 3809, description: 'North east of Immerbury on Coast' },
+            { x: 2037, y: 3823, description: 'North east of Immerbury on Coast' },
+            { x: 2061, y: 3842, description: 'North east of Immerbury on Coast' },
+            { x: 2111, y: 3851, description: 'North east of Immerbury on Coast' },
+            { x: 2141, y: 3859, description: 'North east of Immerbury on Coast' },
+
+        ],
+    },
+    {
+        name: 'Maple Tree',
+        requirements: [
+            '42 Woodcutting'
+        ],
+        location: [
+            { x: 879, y: 4133, description: 'North of Gesterville' },
+            { x: 819, y: 4131, description: 'North of Gesterville' },
         ],
     },
     {
@@ -69,6 +100,8 @@ export const resourceData: ResourceEntry[] = [
         ],
         location: [
             { x: 1672, y: 3380, description: 'Immerbury Castle South' },
+            { x: 1243, y: 4092, description: 'Brei' },
+            { x: 1701, y: 3688, description: 'Island near Immerbury' },
         ],
     },
 ];

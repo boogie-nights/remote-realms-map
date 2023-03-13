@@ -96,6 +96,9 @@ export const npcData: NpcEntry[] = [
       { x: 1635, y: 3310, description: 'Immerbury Storage Barn' },
       { x: 1603, y: 3404, description: 'Immerbury Castle South' },
       { x: 1642, y: 3130, description: 'Immerbury Church' },
+      { x: 832, y: 4014, description: 'Gesterville' },
+      { x: 864, y: 3979, description: 'Gesterville' },
+      { x: 860, y: 3932, description: 'Gesterville' },
     ],
     level: 3,
   },
@@ -104,6 +107,7 @@ export const npcData: NpcEntry[] = [
     location: [
       { x: 1671, y: 3427, description: 'Immerbury Castle South' },
       { x: 1709, y: 3403, description: 'Immerbury Castle South' },
+      { x: 857, y: 3903, description: 'Gesterville' },
     ],
     level: 10,
   },
@@ -114,6 +118,7 @@ export const npcData: NpcEntry[] = [
       { x: 1794, y: 3435, description: 'Immerbury General Store' },
       { x: 1767, y: 3377, description: 'Immerbury Bank' },
       { x: 1603, y: 3131, description: 'Immerbury Church' },
+      { x: 801, y: 3870, description: 'Gesterville south house' },
     ],
     level: 3,
   },
@@ -121,6 +126,7 @@ export const npcData: NpcEntry[] = [
     name: 'Woman',
     location: [
       { x: 1685, y: 3424, description: 'Immerbury Storage Barn' },
+      { x: 799, y: 3911, description: 'Gesterville bar' },
     ],
     level: 10,
   },
@@ -222,6 +228,93 @@ export const npcData: NpcEntry[] = [
       { x: 1875, y: 3340, description: 'Immerbury Horse Pasture' },
       { x: 1905, y: 3353, description: 'Immerbury Horse Pasture' },
       { x: 1885, y: 3375, description: 'Immerbury Horse Pasture' },
+    ],
+  },
+  {
+    name: 'Unicorn',
+    location: [
+      { x: 1024, y: 3799, description: 'South-east of Gesterville' },
+      { x: 1001, y: 3752, description: 'South-east of Gesterville' },
+    ],
+    level: 25
+  },
+  {
+    name: 'Bear',
+    location: [
+      { x: 1191, y: 3812, description: 'South-east of Gesterville' },
+    ],
+    level: 37
+  },
+  {
+    name: 'Grizzly Bear',
+    location: [
+      { x: 1436, y: 4138, description: 'East of Brie' },
+      { x: 1663, y: 3801, description: 'West of Carpentry Bench North of Immerbury' },
+    ],
+    level: 45
+  },
+  {
+    name: 'Wolf',
+    location: [
+      { x: 1754, y: 3782, description: 'North of Carpentry Bench North of Immerbury' },
+      { x: 1829, y: 3754, description: 'North of Carpentry Bench North of Immerbury' },
+      { x: 1822, y: 3823, description: 'North of Carpentry Bench North of Immerbury' },
+      { x: 1957, y: 3780, description: 'North east of Immerbury on Coast' },
+      { x: 1968, y: 3813, description: 'North east of Immerbury on Coast' },
+      { x: 1946, y: 3819, description: 'North east of Immerbury on Coast' },
+      { x: 2009, y: 3829, description: 'North east of Immerbury on Coast' },
+      { x: 1988, y: 3840, description: 'North east of Immerbury on Coast' },
+    ],
+    level: 26
+  },
+  {
+    name: 'Monk',
+    location: [
+      { x: 1125, y: 4084, description: 'Brei' },
+      { x: 1155, y: 4089, description: 'Brei' },
+      { x: 1273, y: 4107, description: 'Brei' },
+    ],
+  },
+  {
+    name: 'Brother Sigmund',
+    location: [
+      { x: 1233, y: 4105, description: 'Brei' },
+    ],
+  },
+  {
+    name: 'Sylvia',
+    location: [
+      { x: 889, y: 3940, description: 'Gesterville' },
+    ],
+  },
+  {
+    name: 'Green',
+    location: [
+      { x: 1886, y: 3765, description: 'North of Immerbury' },
+    ],
+  },
+  {
+    name: 'Blue',
+    location: [
+      { x: 2204, y: 3893, description: 'North of Immerbury' },
+    ],
+  },
+  {
+    name: 'Harald',
+    location: [
+      { x: 2601, y: 3786, description: 'South of Hindsborough' },
+    ],
+  },
+  {
+    name: 'Slayer Master',
+    location: [
+      { x: 1398, y: 3929, description: 'South-east of Brie' },
+    ],
+  },
+  {
+    name: 'Dan',
+    location: [
+      { x: 1610, y: 3769, description: 'West of Carpentry Bench North of Immerbury' },
     ],
   },
 ];
