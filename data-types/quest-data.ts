@@ -1,10 +1,12 @@
+import { Location } from './location';
+
 export interface QuestEntry {
     name: string;
     location: Location;
     requirements?: string[];
 }
 
-export const questData = [
+export const questData: QuestEntry[] = [
     {
         name: 'Culinary Assistance',
         location: { x: 1585, y: 3434 }

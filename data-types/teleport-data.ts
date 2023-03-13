@@ -1,10 +1,12 @@
+import { Location } from './location';
+
 export interface TeleportEntry {
     name: string;
     location: Location;
     requirements?: string[];
 }
 
-export const teleportData = [
+export const teleportData: TeleportEntry[] = [
     {
         name: 'Immerbury Teleport',
         location: { x: 1626, y: 3416 }

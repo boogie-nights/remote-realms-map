@@ -170,7 +170,7 @@ export const npcData: NpcEntry[] = [
   {
     name: 'Inn Keeper',
     location: [
-      { x: 1751, y: 3450, description: 'Immerbury Inn' },
+      { x: 16557, y: 3538, description: 'Immerbury Inn' },
     ]
   },
   {
@@ -208,5 +208,20 @@ export const npcData: NpcEntry[] = [
     location: [
       { x: 1607, y: 3426, description: 'Immerbury' },
     ]
+  },
+  {
+    name: 'Catelyn',
+    location: [
+      { x: 2060, y: 3291, description: 'Immerbury Beach East' },
+    ]
+  },
+  {
+    name: 'Horse',
+    location: [
+      { x: 1842, y: 3360, description: 'Immerbury Horse Pasture' },
+      { x: 1875, y: 3340, description: 'Immerbury Horse Pasture' },
+      { x: 1905, y: 3353, description: 'Immerbury Horse Pasture' },
+      { x: 1885, y: 3375, description: 'Immerbury Horse Pasture' },
+    ],
   },
 ];

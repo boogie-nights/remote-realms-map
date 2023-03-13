@@ -1,16 +1,18 @@
 import './style.css';
-import { npcData } from './npc-data.ts';
-import { questData } from './quest-data';
-import { resourceData } from './resource-data';
-import { teleportData } from './teleport-data';
-import {Map, View} from 'ol';
+import { npcData } from './data-types/npc-data';
+import { questData } from './data-types/quest-data';
+import { resourceData } from './data-types/resource-data';
+import { teleportData } from './data-types/teleport-data';
+import { buildableData } from './data-types/buildable-data';
+import { Map, View } from 'ol';
 import ImageLayer from 'ol/layer/Image.js';
 import Projection from 'ol/proj/Projection.js';
 import Static from 'ol/source/ImageStatic.js';
 import Overlay from 'ol/Overlay.js';
-import {fromLonLat, toLonLat} from 'ol/proj.js';
-import {toStringHDMS} from 'ol/coordinate.js';
-import {Control, defaults as defaultControls} from 'ol/control.js';
+import { fromLonLat, toLonLat } from 'ol/proj.js';
+import { toStringHDMS } from 'ol/coordinate.js';
+import { Control, defaults as defaultControls } from 'ol/control.js';
+import { groundItemData } from './data-types/grounditem-data';
 
 
 function createFilterList() {
@@ -25,6 +27,8 @@ function createFilterList() {
   filterContainer.append(createToggle("Show Resources", "resource"));
   filterContainer.append(createToggle("Show Show Quests", "quest"));
   filterContainer.append(createToggle("Show Teleports", "teleport"));
+  filterContainer.append(createToggle("Show Buildables", "buildable"));
+  filterContainer.append(createToggle("Show Item Spawns", "ground-item"));
 
   return filterContainer;
 }
@@ -74,7 +78,7 @@ class FilterLayersControl extends Control {
 
   handleFilterClick() {
     const filterList = document.getElementById("filtercontainer");
-    if (filterList.classList.contains('hidden')){
+    if (filterList.classList.contains('hidden')) {
       filterList.classList.remove('hidden');
     } else {
       filterList.classList.add('hidden');
@@ -99,40 +103,40 @@ closer.onclick = function () {
   return false;
 };
 
-const imageLayer =  new ImageLayer({
+const imageLayer = new ImageLayer({
   source: new Static({
     attributions: 'Remote Realms',
     url: 'https://remoterealms.com/world_map.png',
     projection: projection,
     imageExtent: extent,
   }),
- });
+});
 
- const popupOverlay = new Overlay({
+const popupOverlay = new Overlay({
   element: container,
   autoPan: {
     animation: {
       duration: 250,
     },
   },
- });
+});
 
 const map = new Map({
   target: 'map',
-  layers: [ imageLayer ],
-  overlays: [ popupOverlay ],
+  layers: [imageLayer],
+  overlays: [popupOverlay],
   controls: defaultControls().extend([new FilterLayersControl()]),
   view: new View({
     projection: projection,
-    center: [ 2527, 3204 ],
+    center: [2527, 3204],
     minZoom: 3,
     zoom: 4,
     maxZoom: 6,
   })
 });
 
-map.on('singleclick', function(evt) {
-  const coordinate =  evt.coordinate;
+map.on('singleclick', function (evt) {
+  const coordinate = evt.coordinate;
 
   let coord1 = Math.floor(coordinate[0]);
   let coord2 = Math.floor(coordinate[1]);
@@ -187,42 +191,20 @@ function createPin(data, type, index) {
         allPopups[i].classList.add('hidden')
       }
       popupId.classList.remove('hidden');
-    } else {    
+    } else {
       popupId.classList.add('hidden');
     }
   });
   return pinContainer;
 }
 
-map.on('loadend', function(evt) {
+map.on('loadend', function (evt) {
 
-  let resourceIndex = 0;
-  resourceData.forEach(resource => {
-    resource.location.forEach(location => {
-      const pin = createPin(resource, "resource", resourceIndex);
 
-      var overlay = new Overlay({
-        element: pin,
-        position: [location.x, location.y]
-      });
-      map.addOverlay(overlay);
-      resourceIndex++;
-    });
-  });
-
-  let npcIndex = 0;
-  npcData.forEach(npc => {
-    npc.location.forEach(location => {
-      const pin = createPin(npc, "npc", npcIndex);
-      var overlay = new Overlay({
-        element: pin,
-        position: [location.x, location.y]
-      });
-  
-      map.addOverlay(overlay)
-      npcIndex++;
-    });
-  });
+  createMultilocationPin(resourceData, 'resource');
+  createMultilocationPin(npcData, 'npc');
+  createMultilocationPin(buildableData, 'buildable');
+  createMultilocationPin(groundItemData, 'ground-item')
 
   questData.forEach((quest, idx) => {
     const pin = createPin(quest, "quest", idx);
@@ -250,16 +232,18 @@ map.on('loadend', function(evt) {
 let checkboxes = document.querySelectorAll("input[type=checkbox][name=settings]");
 let enabledSettings = [];
 
-checkboxes.forEach(function(checkbox) {
-  checkbox.addEventListener('change', function() {
+checkboxes.forEach(function (checkbox) {
+  checkbox.addEventListener('change', function () {
     enabledSettings =
       Array.from(checkboxes)
-      .filter(i => i.checked)
-      .map(i => i.value);
-      togglePinVisbility('npc');
-      togglePinVisbility('resource');
-      togglePinVisbility('quest');
-      togglePinVisbility('teleport');
+        .filter(i => i.checked)
+        .map(i => i.value);
+    togglePinVisbility('npc');
+    togglePinVisbility('resource');
+    togglePinVisbility('quest');
+    togglePinVisbility('teleport');
+    togglePinVisbility('buildable');
+    togglePinVisbility('ground-item');
   });
 });
 
@@ -269,10 +253,26 @@ function togglePinVisbility(type) {
     npcs.forEach(node => {
       node.classList.add('hidden');
     })
-  } else if (enabledSettings.includes(type) ){
+  } else if (enabledSettings.includes(type)) {
     let npcs = document.querySelectorAll(`div[id=${type}]`);
     npcs.forEach(node => {
       node.classList.remove('hidden');
     })
   }
+}
+
+function createMultilocationPin(data, type) {
+  let index = 0;
+  data.forEach(entry => {
+    entry.location.forEach(location => {
+      const pin = createPin(entry, type, index);
+
+      var overlay = new Overlay({
+        element: pin,
+        position: [location.x, location.y]
+      });
+      map.addOverlay(overlay);
+      index++;
+    });
+  });
 }

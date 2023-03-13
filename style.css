@@ -90,6 +90,14 @@ html, body {
   filter: invert(83%) sepia(82%) saturate(2143%) hue-rotate(182deg) brightness(100%) contrast(78%) drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
 }
 
+.map-pin.buildable {
+  filter: invert(98%) sepia(3%) saturate(6315%) hue-rotate(53deg) brightness(96%) contrast(95%) drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+}
+
+.map-pin.ground-item {
+  filter: invert(83%) sepia(14%) saturate(2426%) hue-rotate(309deg) brightness(99%) contrast(107%) drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+}
+
 .map-pin:after, .map-pin:before {
   top: 100%;
   border: solid transparent;
