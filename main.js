@@ -1,5 +1,8 @@
 import './style.css';
-import { npcData, questData, resourceData, teleportData} from './data.js';
+import { npcData } from './npc-data.ts';
+import { questData } from './quest-data';
+import { resourceData } from './resource-data';
+import { teleportData } from './teleport-data';
 import {Map, View} from 'ol';
 import ImageLayer from 'ol/layer/Image.js';
 import Projection from 'ol/proj/Projection.js';
@@ -193,26 +196,32 @@ function createPin(data, type, index) {
 
 map.on('loadend', function(evt) {
 
-  resourceData.forEach((resource, idx) => {
-    const pin = createPin(resource, "resource", idx);
+  let resourceIndex = 0;
+  resourceData.forEach(resource => {
+    resource.location.forEach(location => {
+      const pin = createPin(resource, "resource", resourceIndex);
 
-    var overlay = new Overlay({
-      element: pin,
-      position: resource.location
+      var overlay = new Overlay({
+        element: pin,
+        position: [location.x, location.y]
+      });
+      map.addOverlay(overlay);
+      resourceIndex++;
     });
+  });
 
-    map.addOverlay(overlay)
-  })
-
-  npcData.forEach((npc, idx) => {
-    const pin = createPin(npc, "npc", idx);
-
-    var overlay = new Overlay({
-      element: pin,
-      position: npc.location
+  let npcIndex = 0;
+  npcData.forEach(npc => {
+    npc.location.forEach(location => {
+      const pin = createPin(npc, "npc", npcIndex);
+      var overlay = new Overlay({
+        element: pin,
+        position: [location.x, location.y]
+      });
+  
+      map.addOverlay(overlay)
+      npcIndex++;
     });
-
-    map.addOverlay(overlay)
   });
 
   questData.forEach((quest, idx) => {
@@ -220,7 +229,7 @@ map.on('loadend', function(evt) {
 
     var overlay = new Overlay({
       element: pin,
-      position: quest.location
+      position: [quest.location.x, quest.location.y]
     });
 
     map.addOverlay(overlay)
@@ -231,11 +240,11 @@ map.on('loadend', function(evt) {
 
     var overlay = new Overlay({
       element: pin,
-      position: teleport.location
+      position: [teleport.location.x, teleport.location.y]
     });
 
     map.addOverlay(overlay)
-  })
+  });
 });
 
 let checkboxes = document.querySelectorAll("input[type=checkbox][name=settings]");
